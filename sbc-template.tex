@@ -4,29 +4,30 @@
 
 \usepackage{graphicx,url}
 
-%\usepackage[brazil]{babel}   
-\usepackage[latin1]{inputenc}  
+\usepackage[brazil]{babel}
+\usepackage[latin1]{inputenc}
 
-     
+
 \sloppy
 
-\title{Instructions for Authors of SBC Conferences\\ Papers and Abstracts}
+\title{Estratégias de Aprendizado de Máquina para Sistemas de Recomendação baseados em Conteúdo textual}
 
-\author{Luciana P. Nedel\inst{1}, Rafael H. Bordini\inst{2}, Flávio Rech
-  Wagner\inst{1}, Jomi F. Hübner\inst{3} }
+\author{Lucas F.
+Brunialti\inst{1}, Sarajane M.
+Peres\inst{1}, Valdinei F.
+da Silva\inst{1} }
 
 
-\address{Instituto de Informática -- Universidade Federal do Rio Grande do Sul
-  (UFRGS)\\
-  Caixa Postal 15.064 -- 91.501-970 -- Porto Alegre -- RS -- Brazil
-\nextinstitute
-  Department of Computer Science -- University of Durham\\
-  Durham, U.K.
-\nextinstitute
-  Departamento de Sistemas e Computação\\
-  Universidade Regional de Blumenal (FURB) -- Blumenau, SC -- Brazil
-  \email{\{nedel,flavio\}@inf.ufrgs.br, R.Bordini@durham.ac.uk,
-  jomi@inf.furb.br}
+\address{Escola de Artes, Ciências e Humanidades -- Universidade de São Paulo
+  (USP)\\
+  Caixa Postal 15.064 -- 91.501-970 -- São Paulo -- SP -- Brasil
+% \nextinstitute
+%   Department of Computer Science -- University of Durham\\
+%   Durham, U.K.
+% \nextinstitute
+%   Departamento de Sistemas e Computação\\
+%   Universidade Regional de Blumenal (FURB) -- Blumenau, SC -- Brazil
+  \email{\{lucas.brunialti,sarajane,valdinei.freire\}@usp.br}
 }
 
 \begin{document} 
@@ -34,131 +35,578 @@
 \maketitle
 
 \begin{abstract}
-  This meta-paper describes the style to be used in articles and short papers
-  for SBC conferences. For papers in English, you should add just an abstract
-  while for the papers in Portuguese, we also ask for an abstract in
-  Portuguese (``resumo''). In both cases, abstracts should not have more than
-  10 lines and must be in the first page of the paper.
+  Recommender Systems (SR) is a potential area in which Machine Learning (ML) strategies can be successfully applied.
+  Especially in the textual context, the use of ML in SR has grown in recent years.
+  In this paper, we present the results of a study undertaken to seek and assess ML strategies in SR for text context through a Systematic Literature Review.
+  From such a study, we found supervised ML strategies are more frequently applied in this type of system than unsupervised and semi-supervised ML strategies, despite of the latter strategies have potential to bring useful knowledge and information for the recommended actions.
+  Thus, we highlighted the use of unsupervised and semi-supervised strategies in this type of systems in order to delineate a research roadmap in this field.
 \end{abstract}
-     
+
 \begin{resumo} 
   Este meta-artigo descreve o estilo a ser usado na confecção de artigos e
   resumos de artigos para publicação nos anais das conferências organizadas
-  pela SBC. É solicitada a escrita de resumo e abstract apenas para os artigos
-  escritos em português. Artigos em inglês deverão apresentar apenas abstract.
+  pela SBC.
+É solicitada a escrita de resumo e abstract apenas para os artigos
+  escritos em português.
+Artigos em inglês deverão apresentar apenas abstract.
   Nos dois casos, o autor deve tomar cuidado para que o resumo (e o abstract)
   não ultrapassem 10 linhas cada, sendo que ambos devem estar na primeira
   página do artigo.
 \end{resumo}
 
+\section{Introdução}
+\label{sec:intro}
 
-\section{General Information}
+Um sistema de recomendação (SR) tem como objetivo sugerir itens de forma a satisfazer sob algum aspecto as necessidades do usuário ao qual se destinam.
+Geralmente, esses sistemas atuam em contextos onde a tomada de decisão sobre a escolha de um ou mais itens se dá dentro de um conjunto grande de opções, no qual uma busca simples realizada por meio de mecanismos clássicos como palavras chave ou termos de interesse têm a chance de retornar resultados numerosos e, muito provavelmente, insatisfatórios às reais necessidades dos usuários.
 
-All full papers and posters (short papers) submitted to some SBC conference,
-including any supporting documents, should be written in English or in
-Portuguese. The format paper should be A4 with single column, 3.5 cm for upper
-margin, 2.5 cm for bottom margin and 3.0 cm for lateral margins, without
-headers or footers. The main font must be Times, 12 point nominal size, with 6
-points of space before each paragraph. Page numbers must be suppressed.
+Os primeiros SR surgiram no início da década de 1990 \cite{Adomavicius2005}, e um dos primeiros sistemas propostos chamava-se \textit{Tapestry} \cite{Resnick1997}, o qual introduziu a \textit{Filtragem Colaborativa} como uma técnica para implementação da recomendação.
+Essa técnica se caracteriza por recomendar a um usuário ativo no sistema, os itens que outros usuários com gostos similares consumiram no passado, formando um filtro conhecido como ``people-to-people correlation'' \cite{Ricci2011}.
+Além dessa, outras técnicas que implementam maneiras diferentes de recomendar itens caracterizam outros tipos de SR.
+\cite{Jannach2011} discute uma taxonomia composta por quatro tipos básicos de SR, de acordo com a forma como a recomendação é implementada em cada um deles: \textit{colaborativo} como já descrito; \textit{baseado em conteúdo}, no qual as recomendações são geradas com base nas características associadas aos itens e na taxa de aceitação destes itens pelos usuários; \textit{baseado em conhecimento}, em que sugestões de itens são baseadas em inferências sobre as necessidades e preferências dos usuários.
+Cada um destes tipos de sistema possui vantagens e desvantagens que podem ser superadas a partir da criação de sistema \textit{híbridos}, os quais são implementados a partir da combinação das técnicas que definem os tipos básicos.
+% E finalmente, um tipo de SR mais recentemente em desenvolvimento é \textit{baseado em comunidade}, no qual as recomendações são baseadas nas preferências de uma rede de usuários amigos.
+% O princípio deste tipo de estratégia é que existe uma tendência na preferência por recomendações baseadas em fontes conhecidas, em detrimento daquelas recomendações baseadas em fontes anônimas \cite{Ricci2011}.
 
-Full papers must respect the page limits defined by the conference.
-Conferences that publish just abstracts ask for \textbf{one}-page texts.
+% para cada um dos tipos seria bom encontrar exemplos de artigos bons, publicados em journals reconhecidos.
+inclusive no journal que objetivamos.
 
-\section{First Page} \label{sec:firstpage}
+Atualmente, os SR têm sido considerados ferramentas eficientes e valorosas, principalmente para usuários de sistemas online \cite{Senecal2004159,Ricci2011}, os quais se deparam com um montante de informação muito maior do que conseguem tratar e processar adequadamente; e, a indústria de software para Web já considera, há algum tempo, os SR como um meio de atender melhor as demandas dos seus clientes e, portanto, de tornar seus sistemas mais eficientes e lucrativos \cite{Koren2009}.
+Dentro deste contexto, a indústria e clientes do comércio eletrônico, ou os produtores e consumidores de informação textual na Web (notícias, livros, revistas, artigos científicos) representam classes de usuários que se beneficiam com este tipo de sistema.
+Frequentemente, a informação textual é objeto de processamento de SR baseados em conteúdo que recomendam notícias \cite{Capelle2012, ClegerTamayo2012180}, artigos \cite{ASRYS2012, Lops2013}, \textit{threads} em fóruns \cite{Qu80861} ou produtos \cite{YenHsien2012}.
 
-The first page must display the paper title, the name and address of the
-authors, the abstract in English and ``resumo'' in Portuguese (``resumos'' are
-required only for papers written in Portuguese). The title must be centered
-over the whole page, in 16 point boldface font and with 12 points of space
-before itself. Author names must be centered in 12 point font, bold, all of
-them disposed in the same line, separated by commas and with 12 points of
-space after the title. Addresses must be centered in 12 point font, also with
-12 points of space after the authors' names. E-mail addresses should be
-written using font Courier New, 10 point nominal size, with 6 points of space
-before and 6 points of space after.
+ML é caracterizado pelo desenvolvimento de métodos e técnicas que objetivam prover os softwares com a habilidade de melhorar sua performance em uma tarefa, aprendendo através da experiência \cite{Mitchell1997}.
+Este tipo de aprendizado (aprendizado indutivo) pode ser alcançado por meio de métodos supervisionados, semi-supervisionados ou não supervisionados.
+Diferentes estratégias de ML, ou a combinação delas \cite{Bell2005}, têm sido usadas para análise de dados textuais nos mais diversos contextos \cite{Cetintas2011,Min2006} e para diferentes finalidades \cite{Cai2012,Huang2006,Montanes2005}.
+O sucesso obtido nestes contextos mostra que tais estratégias são adequadas para processar informação e extrair conhecimento contidos em conjuntos de dados textuais e, portanto, são suscetíveis à aplicação na construção de SR que trabalham com informações textuais.
 
-The abstract and ``resumo'' (if is the case) must be in 12 point Times font,
-indented 0.8cm on both sides. The word \textbf{Abstract} and \textbf{Resumo},
-should be written in boldface and must precede the text.
+% DEIXAR MAIS ESPECÍFICO EM RELAÇÃO AO TIPO DE SISTEMA DE RECOMENDAÇÃO QUE ESTAMOS ESTUDANDO
 
-\section{CD-ROMs and Printed Proceedings}
-
-In some conferences, the papers are published on CD-ROM while only the
-abstract is published in the printed Proceedings. In this case, authors are
-invited to prepare two final versions of the paper. One, complete, to be
-published on the CD and the other, containing only the first page, with
-abstract and ``resumo'' (for papers in Portuguese).
-
-\section{Sections and Paragraphs}
-
-Section titles must be in boldface, 13pt, flush left. There should be an extra
-12 pt of space before each title. Section numbering is optional. The first
-paragraph of each section should not be indented, while the first lines of
-subsequent paragraphs should be indented by 1.27 cm.
-
-\subsection{Subsections}
-
-The subsection titles must be in boldface, 12pt, flush left.
-
-\section{Figures and Captions}\label{sec:figs}
+Com o objetivo de contribuir com essa área de pesquisa, uma extensiva Sistematic Literature Review (SLR) foi conduzida sobre trabalhos de pesquisa existentes que apresentam ML como abordagem de implementação da tomada de decisão em SR que atuam com dados textuais.
+Considerando os avanços já alcançados nas abordagens que usam aprendizado supervisionado nos SR, atenção especial foi dada nesta revisão para o uso de aprendizado não-supervisionado e semi-supervisionado na proposição de abordagens para solução de problemas em SR.
+Portanto, o principal objetivo deste paper é apresentar os resultados desta investigação de forma que pesquisadores interessados nesta área tenham um quadro (border picture) geral de ML aplicado a SR que atuam com dados textuais; e um roadmap com tendências e questões abertas no uso específico de técnicas de aprendizado não-supervisionado e semi-supervisionado neste contexto.
 
 
-Figure and table captions should be centered if less than one line
-(Figure~\ref{fig:exampleFig1}), otherwise justified and indented by 0.8cm on
-both margins, as shown in Figure~\ref{fig:exampleFig2}. The caption font must
-be Helvetica, 10 point, boldface, with 6 points of space before and after each
-caption.
+The remainder of this paper is structured as follows: Section~\ref{sec:back} presents the basic concepts related to ML and SR; Section~\ref{sec:works} presents some works similar to the SLR presented here; Section~\ref{sec:metho} presents the methodology applied to conduct this SLR; Sections~\ref{sec:results} and~\ref{sec:discussion} present, respectively, the review results and the discussion of the results; Section~\ref{sec:roadmap} presents a roadmap related to use of unsupervised and semi-supervised strategies in the current SR context; and, Section~\ref{sec:conc} presents the conclusion of this paper.
 
-\begin{figure}[ht]
+
+\section{Background}
+\label{sec:back}
+
+Esta Seção trará informações sobre SR baseados em Conteúdo (SRbC), apresentando uma formalização do problema de recomendação com base no conteúdo e a arquitetura para esse tipo de sistema.
+
+\subsection{Sistemas de Recomendação baseados em Conteúdo}
+
+Os CBSRs têm fortes relações com a área de Recuperação de Informação \cite{Adomavicius2005, Jannach2011} e Aprendizado de Máquina \cite{Adomavicius2005, Lops2011} para representação de itens e perfis de usuários, e aprendizado do perfil do usuário, respectivamente.
+Basicamente, este tipo de sistema analisa o conteúdo de diversos itens, extraindo atributos para representação, com esses mesmos atributos (ou às vezes até mais \cite{Capelle2012}) representa-se o perfil do usuário.
+Sabendo os interesses dos usuários, através do perfil construído, o sistema seleciona itens que o usuário ainda não consumiu e que sejam relacionados com os seus interesses.
+
+% TODO Adaptar esse parágrafo
+Seja um conjunto de usuários $U = \{ u_1, u_2, \dots, u_n, \dots, u_N \}$, um conjunto de itens ${\cal I} = \{ I_1, I_2, \dots, I_m, \dots, I_M \}$ e o histórico $h_{u_n,I_m} \in {\cal H}$ indicando se o usuário $u_n$ acessou o item $I_m$.
+O problema de recomendação, com base no conteúdo, pode ser visto como a definição de uma função de similaridade entre itens $s: I \rightarrow I \times I$ para aproximar uma função $l_{u_n}$, que irá representar o perfil do usuário $u_n$, $l_{u_n}: {\cal H}_{u_n}, s \rightarrow L_{u_n}$, onde ${\cal H}_{u_n}$ é o subconjunto que representa o histórico de itens que $u_n$ acessou, e $L_{u_n}$ é a lista de recomendações de itens direcionadas à $u_n$.
+
+\subsubsection{Arquitetura de Sistemas de Recomendação baseados em Conteúdo}
+\label{sec:arquitetura}
+
+Em \cite{Lops2011} é proposta uma arquitetura para o desenvolvimento de CBSRs, a qual separa o processo de recomendação em três fases (Figura ~\ref{fig:approach}).
+O analisador de conteúdo tem como entrada os itens não estruturados, assim, através de técnicas de representação e pré-processamento, são obtidos os itens representados.
+Uma das representações mais comuns \cite{Adomavicius2005, Jannach2011, Lops2011} para representação textual é o Modelo do Espaço Vetorial \cite{Salton1975}, aonde cada item ou documento $d_i \in D$, sendo $D$ um conjunto de documentos de tamanho $n$, é representado por um vetor de termos $d_i = \{t_1, t_2, \dots, t_m\}$, em que $m$ é o número de termos.
+Assim, calcula-se o \textit{$TFIDF^{d_i}_{t_k}$ (Term-Frequency Index-Frequency)} do documento $d_i$ e o termo $t_k$ \cite{Salton1975}:
+
+\begin{equation}
+\label{eq:1}
+\begin{multlined}
+TFIDF^{d_i}_{t_k} = TF \cdot IDF \\
+TFIDF^{d_i}_{t_k} = f^{d_i}_{t_k} \cdot (log_2 n - log_2 f^{t_k}_{d_i} + 1) \\
+\end{multlined}
+\end{equation}
+
+Em que $f^{d_i}_{t_k}$ é a frequência do termo $t_k$ no documento $d_i$ e $f^{t_k}_{d_i}$ é a número de documentos $d_i$ que possuem $t_k$.
+Fazendo com que o peso de termos que aparecem em muitos documentos seja reduzido.
+Há também outros métodos de representação, como \textit{n-grams} e semântica \cite{Lops2011, Jannach2011}.
+
+Além da forma de representar os itens, há o pré-processamento, que é comum a utilização de \textit{stopwords}, steeming, descarte de termos com baixa frequência.
+Também, o uso de técnicas de redução de dimensionalidade como variáveis latentes, e outros algoritmos como \textit{Latent Semantic Analysis (LSA)}, \textit{Latent Semantic Indexing (LSI)}, \textit{Latent Dirichlet Allocation (LSA)} que têm como objetivo, basicamente, agrupar termos em tópicos \cite{Qu80861, Taraghi2013672, Saaya2013}.
+
+Com a representação dos itens estruturada realizada, ocorre a representação dos perfis, que geralmente é baseado na representação dos itens, ou seja, o perfil do usuário $u_j$ é dado por $\{<d_1, r_1>, \dots, <d_j, r_J>\}$, sendo $r_j$ o quão o usuário gostou do item, seja pela manifestação explícita, por exemplo em que o usuário avaliou o item, ou pela manifestação implícita, tendo como exemplo quando o usuário lê uma notícia, fica muito tempo na página, etc.
+Finalmente, é possível aprender os perfis dos usuários com Aprendizado de Máquina \cite{Lops2011, Jannach2011, Adomavicius2005}, por exemplo, para prever se o usuário gosta ou não de um determinado item (classificação).
+
+A terceira fase é o Componente de Filtragem, que basicamente pega a saída do classificador, seleciona os itens mais relevantes para os usuários, e apresenta uma lista de recomendações.
+Geralmente, essa lista é ordenada e apresentada os top $N$ itens mais relevantes (ver Seção ~\ref{sec:resultados}).
+
+\begin{figure}[H]
 \centering
-\includegraphics[width=.5\textwidth]{fig1.jpg}
-\caption{A typical figure}
-\label{fig:exampleFig1}
+\includegraphics[scale=0.45]{approach}
+\caption{Arquitetura de um CBSR (Adaptado de \cite{Lops2011}).}
+\label{fig:approach}
 \end{figure}
 
-\begin{figure}[ht]
-\centering
-\includegraphics[width=.3\textwidth]{fig2.jpg}
-\caption{This figure is an example of a figure caption taking more than one
-  line and justified considering margins mentioned in Section~\ref{sec:figs}.}
-\label{fig:exampleFig2}
-\end{figure}
+Essa arquitetura apresentada foi adaptada de \cite{Lops2011}, para maior compreendimento e melhor extração de informações nos trabalhos revisados (ver Seção ~\ref{sec:metodologia}).
 
-In tables, try to avoid the use of colored or shaded backgrounds, and avoid
-thick, doubled, or unnecessary framing lines. When reporting empirical data,
-do not use more decimal digits than warranted by their precision and
-reproducibility. Table caption must be placed before the table (see Table 1)
-and the font used must also be Helvetica, 10 point, boldface, with 6 points of
-space before and after each caption.
 
-\begin{table}[ht]
+\subsubsection{Vantagens e Desvantagens de Sistemas de Recomendação baseados em Conteúdo}
+
+O SRs possuem algumas vantagens e desvantagens, assim como cada tipo de SR, então deve-se conhecer a base de dados em que o CBSR será usado.
+Suas vantagens são \cite{Adomavicius2005, Lops2011}:
+
+\begin{compactitem}
+  \item É relativamente fácil explicar para o usuário o por quê da recomendação daqueles itens, pois como é baseado em conteúdo, o que o sistema faz é simplesmente recomendar itens parecidos com os itens que o usuário manifestou interesse no passado.
+  \item O CBSR não necessita de uma base de dados de usuários grande, pois se baseia apenas nas relações entre os itens.
+  \item Itens que nunca foram mostrados nem avaliados por nenhum usuário, são recomendados como itens antigos (\textit{Item cold-start}).
+\end{compactitem}
+
+Há também as desvantagens dos CBSRs, apresentados em \cite{Adomavicius2005, Lops2011, Jannach2011}:
+
+\begin{compactitem}
+\item A análise de conteúdo geralmente é limitada, extrair interesses de conteúdos textuais é uma tarefa difícil, e na nova web aparecem mais e mais conteúdos multimídia, como vídeos e fotos, tornando ainda mais difícil detectar interesses, por exemplo, um usuário pode gostar de filmes de terror em que seu ator preferido participa, mas pode não gostar de filmes de comédia que esse ator faz.
+\item Incapacidade de apresentar itens que não fazem parte dos interesses que o SR extraiu, mas que o usuário pode gostar (Serendipidade), fazendo com que as recomendações fiquem sempre no(s) mesmo(s) domínio(s).
+
+\item O CBSR não pode captar interesses de longo prazo para novos usuários (\textit{User cold-start}).
+Se é usado Aprendizado Supervisionado no SR, o sistema irá sofrer com a pouca quantidade de dados, pois os usuários avaliam apenas uma pequena parcela do conjunto de itens.
+\end{compactitem}
+
+Os CBSRs apresentam diversas desvantagens que podem afetar a efetividade do SR, no entanto, na Revisão Sistemática realizada foram encontrados diversas formas de escapar dessas desvantagens que os CBSRs apresentam (ver Seção ~\ref{sec:resultados}).
+
+
+\section{Related Work}
+\label{sec:works}
+
+Os trabalhos correlatos encontrados com a SLR são apresentados na Tabela~\ref{tab:relatedwork}, nenhum dos trabalhos estão em forma de Systematic Literature Review, diferentemente deste trabalho, que esta em forma de SLR.
+
+Este trabalho também se difere em respeito ao contexto, os trabalhos correlatos apresentam uma literature review no contexto de SR, SR in the news domain (News Recommendation), Text Classification e CBSR, enquanto este esta no contexto de ML e CBSRs for textual domains.
+
+Para a comparação dos trabalhos relacionados foi realizado um mapeamento dos estudos primários de cada review.
+Os trabalhos mapeados foram extraídos a partir do capítulo com a maior ênfase da review, excluindo citações de trabalhos teóricos.
+Por exemplo em [5], a ênfase é dada em técnicas usadas em CBSR e aplicações de Text Classification, então foram mapeados os trabalhos que eram aplicações de CBSR ou Text Classification, além disso, foram excluídos citações à algoritmos, que são trabalhos teóricos e não fazem parte da review de aplicações em CBSR ou Text Classification.
+
+Foram extraídas duas informações a partir do mapeamento realizado.
+A primeira é o period, a informação da data que foi considerada para buscar os estudos primários de cada review.
+É possível perceber que a data inicial dos trabalhos são no início da década de 90 (com exceção de [5]), pois foi o período em que os primeiros SRs surgiram \cite{Adomavicius2005}.
+O período das reviews variam de 12 à 19 anos, com uma média de 15 anos, o qual pode representar a idade da área de SR.
+
+A segunda informação é o number of studies, o número de estudos primários considerados em cada review.
+Com a análise desse atributo, é possível observar alto desvio-padrão ($16.8$), que pode ocorrer devido aos diferentes contextos das reviews.
+A informação de number of studies é apresentada de forma segmentada pelo contexto (Tabela~\ref{tab:relatedwork}).
+
+% [1] e [4] por abordarem contextos mais amplos possuem mais estudos primários do que as reviews [2] e [3], apesar de [3] apresentar 10 estudos primários para o contexto de SRs, este faz apenas uma breve survey deste contexto, tendo foco no contexto de News Recommendation (7 estudos primários).
+
+A maioria das reviews apresentam uma taxonomia tradicional para Recommender Systems: Content-Based, Collaborative Filtering and Hybrid, com exceção de [3] que apresenta a taxonomia de \cite{Burke2007}, também presente neste trabalho (Seção~\ref{intro}).
+
+A fim de apresentar os trabalho correlatos, foi realizado um breve resumo de cada um:
+
+\begin{itemize}
+  \item [1] Toward the Next Generation of Recommender Systems: A Survey of the State-of-the-Art and Possible Extensions tem o objetivo de apresentar as técnicas que estão sendo usadas em cada um dos tipos de SRs em geral, assim como as estratégias para contornar as desvantagens de cada tipo de SR.
+Esta survey também propõem possíveis extensões na área de SRs e linhas para pesquisas futuras.
+  \item [2] Personalized News Recommendation: A Review and Experimental Investigation tem o objetivo investigar os desafios e técnicas em SRs no domínio de notícias, mostrando os problemas e questões relacionados à este domínio.
+A review coloca o foco, principalmente, no problema de scalability.
+Além disso, propõem estratégias para modelagem do perfil e como relacionar notícias com este perfil.
+Também são realizados experimentos com as técnicas e estratégias estudadas.
+  \item [3] A Survey on Recommender Systems for News Data tem como objetivo principal apresentar os SRs no domínio de notícias, sumarizando os tipos de SRs usados, suas técnicas e estratégias.
+O trabalho apresenta uma review dos tipos de SRs e das vantagens e desvantagens de cada tipo, através da apresentação de SRs de domínios variados.
+  \item [4] Content-Based Recommender Systems: State-of-the-Art and Trends apresenta todos os passos referentes ao desenvolvimento de um CBSR, assim como uma review de CBSR, sumarizando as técnicas utilizadas nos trabalhos, segmentando-as quanto à representação do item e aprendizado do perfil.
+Além disso, são apresentados passos para a evolução dos CBSRs.
+  \item [5] Content-Based Recommendation Systems tem como objetivo principal investigar os algoritmos que são usados em CBSR, ou também, que podem ser usados, como algoritmos da área de Text Classification.
+O trabalho apresentado também discute formas para representar os itens, o perfil do usuário e, limitações e extensões para CBSR.
+\end{itemize}
+
+\begin{table}[h]
+\label{tab:relatedwork}
+\begin{tabular}{cccccc}
+\hline
+\textbf{Review} & \textbf{Year} & \textbf{Context} & \textbf{Period} & \textbf{Number of Studies} & \textbf{Taxonomy} \\
+\hline
+{[}1{]} & 2005 & Recommender Systems in general & 1993-2004 & 58 & traditional \\
+{[}2{]} & 2011 & News Recommendation & 1994-2011 & 20 & traditional \\
+{[}3{]} & 2010 & Recommender Systems, News Recommendation & 1994-2007 & 10, 7 & traditional, Burke \\
+{[}4{]} & 2013 & Content-Based Recommender Systems & 1997-2008 & 44 & traditional \\
+{[}5{]} & 2007 & Content-Based Recommender Systems, Text Classification & 1961-2002 & 7, 10 & traditional \\
+\hline
+\end{tabular}
+\end{table}
+% Vou colocar as referencias no .bib
+% Não estou conseguindo arrumar essa tabela para respeitar as margens, estou vendo isso
+
+Talvez incluir o do Burke (que citamos na Introducao)(?)
+
+
+\section{Methodology}
+\label{sec:metho}
+
+Uma SLR (Systematic Literature Review) é uma estratégia usada para identificar, interpretar e avaliar toda a pesquisa relevante para um tópico de pesquisa em particular \cite{Kitchenham07}.
+Nesta estratégia, as contribuições individuais analisadas são chamadas de estudos primários, e a SLR se constitui como um estudo secundário.
+A principal diferença entre uma SLR e simples revisões ou surveys de literatura é que a primeira fornece condições de reproducibilidade e de avaliação do escopo abrangido na revisão bem como da qualidade dos estudos nela analisados.
+Uma SLR fornece condições para maximizar a possibilidade de recuperar um conjunto completo de dados e minimizar bias possibility.
+
+Kitchenham \citet{Kitchenham07} propõe guidelines para a condução de uma SLR.
+Com base nestas guidelines, esta SLR foi conduzida seguindo as seguintes fases: (i) planning the SLR; (ii) conducting the SLR; and (iii) reporting the SLR.
+Nesta seção são detalhados os passos seguidos nas fases (i) e (ii).
+Os resultados e análises referentes à terceira fase são apresentados nas próximas seções (Sections \ref{sec:results}, \ref{sec:discussion} e \ref{sec:roadmap}).
+
+\subsection{Systematic literature review planning}
+\label{sec:planning}
+
+O planejamento de uma revisão sistemática inclui a identificação da justificativa para a revisão, a especificações das questões de pesquisa que se prentede responder e o desenvolvimento de um protocolo para escolha dos estudos que serão incluídos na revisão.
+Nesta seção, estes passo são explorados.
+
+Foram analisados 97 trabalhos => sobraram 19
+
+\subsubsection{Justification for the systematic literature review}
+\label{sec:justification}
+
+% Eu não sei se eu gostei muito desta justificativa.
+Ela ficou um pouco informal.
+Acho que ela pode ser melhorada depois que fizermos a seção de trabalhos correlatos, onde levantaremos alguns números e características de revisões ou surveys existentes na área.
+Aí podemos trazer um resumo dos números para cá ou referenciar a seção de trabalhos correlatos para dar mais valor à revisão sistemática.
+
+Até onde foi possível identificar (see Section~\ref{sec:works}), não existem SLR publicadas na área de  ML applicada a SR de conteúdo textual.
+Não foi encontrado um estudo que organizasse, de forma sistemática, os avanços que já foram obtidos e as questões em aberto em relação a aplicação de aprendizado não supervisionado e semisupervisionado neste tipo de sistema, embora tais estratégias tenham um alto potencial para fornecer conhecimento importante e útil para SR (como mostrado nas Sections~\ref{sec:discussion} and~\ref{sec:roadmap}).
+Os autores deste estudo tem o objetivo de desenvolver soluções para SR para notícias disponíveis em um grande portal WEB e, assim como outros grupos de pesquisa que atuam na mesma área, a sistematização de estratégias já estudadas contribui para que o processo criativo para novas soluções seja otimizado.
+Uma revisão sistemática deste tipo pode contribuir ainda com grupos de pesquisa que desejam iniciar seus estudos na área, economizando tempo precioso de levantamento do estado da arte e possibilitando que os pesquisadores foquem na proposição e avaliação de novas abordagens.
+
+
+% se o conjunto de dados da IG já estiver disponível publicamente, podemos colocar em rodapé o endereço de onde ele está.
+
+\subsubsection{Research questions}
+\label{sec:question}
+
+% andei usando umas estratégias no Latex para conseguir o formato de texto que eu queria, mas acho que precisa arrumar isso.
+Devo ter feito besteira.
+
+% dependendo do que conseguirmos nos trabalhos correlatos, nós podemos distribuir alguns conclusões dos autores nestas discussões, de forma a embasar nossas hipóteses.
+
+% levantei hipóteses para depois discutirmos nas análises, mas elas não são necessárias segundo a metodologia da Kitchenham.
+Podemos transformar as hipóteses em textos que comentam as questões mesmo, se preferirem.
+
+Diante das justificativas delineadas na Seção~\ref{sec:justification} para elaboração desta SLR, e seguindo o disposto em \cite{Kitchenham07}, um conjunto de questões de pesquisa foi elaborado.
+Além das questões, algumas hipóteses foram levantadas com o intuito de ilustrar motivações para cada uma das questões.
+
+\paragraph{\textit{Q1.Which architecture modules of a SR for text content have been addressed with ML strategies?}} 
+O objetivo desta pergunta é identificar quais os módulos de um SR para conteúdo textual já foram explorados com base no uso de ML strategies.
+Para esse propósito, as seguintes fases da construção de um SR foram consideradas: fase de representação dos itens a serem recomendados; fase de personalização dos usuários; e fase de proposição das recomendações - de acordo com a arquitetura clássica de um SR apresentada por \textcolor{red}{REFERÊNCIA}.
+Com base em um estudo exploratório realizado previamente aos trabalhos de condução desta SLR, a seguinte hipótese foi formulada:
+
+\paragraph{\textbf{Hipothesys 1}: O módulo de um SR que é mais suscetível à aplicação de ML strategies é aquele composto pelo mecanismo de proposição das recomendações e, portanto, a fase de construção deste módulo deve ser onde mais se aplica ML strategies.
+Porém, desde que o objeto de estudo desta SLR são SR aplicados ao contexto de conteúdo textual, a descrição e representação dos itens podem ser implementadas com base em características que expressam a relação deles com outros itens e/ou usuários.
+Também, a personalização dos usuários podem seguir a mesma linha de estabelcimento de relações com itens e/ou outros usuários.
+Assim, os módulos que fornecem as descrições e representações dos itens e a personalização dos usuários são suscetíveis à aplicação de ML strategies, em especial aquelas que fornecem modelos de classificação e agrupamento (clustering) de dados.}
+
+\paragraph{\textit{Q2.
+Which of the ML strategies are applied to the SR for text content domain?}}
+Como um contraposto à questão Q1, a questão Q2 tem o objetivo de identificar quais são as estratégias de ML que são mais comumente aplicadas em SR for text content.
+Para organizar os resultados referentes à resposta desta questão, nesta SLR, as stratégias de ML estão categorizadas de acordo com a estratégia de implementação do aprendizado indutivo: aprendizado supervisionado; aprendizado não supervisionado e aprendizado semisupervisionado.
+A hipótese formulada para esta questão é:
+
+\paragraph{\textbf{Hipothesys 2}: Modelos construídos usando a estratégia de aprendizado supervisionado são mais facilmente interpretados e sua corretude e utilidade é diretamente compreendida por especialistas humanos por meio da análise das clássicas medidas de avaliação de performance de classificadores.
+Ja modelos construídos usando estratégias não supervisionadas apresentam resultados que são mais difíceis de analisar e interpretar, e sua corretude e aplicabilidade no contexto, mesmo quando feita por medidas formais, não são diretamente percebidas por especialistas humanos.
+Assim, estratégias implementadas sob a estratégia não supervisionada, são menos exploradas no contexto de SR.
+Em relação a estratégias de aprendizado semi-supervisionado, a hipótese é de que são menos exploradas também por serem menos difundidas na literatura em geral.}
+
+% Essa hipótese 2 está bem baseada em percepção.
+Vamos precisar reforçar ela com referências bibliográficas.
+
+\paragraph{}Como complemento para a questão Q2, outras duas questões foram delineadas: {\textit{Q2a.Quais são as vantagens e desvantagens de usar ML strategies in the SR text content context?} \textit{Q2b.Como informações externas ao conteúdo textual sob recomendação podem ser usadas pelas técnicas de ML para melhorar os resultados do sistema?}
+
+\paragraph{\textit{Q3.
+How unsupervised and semi-supervised has been used in the SR for text content domain?}}
+O objetivo desta questão é fornecer embasamento para a construção da Seção~\ref{sec:roadmap}, onde as questões em aberto nesta subárea são delineadas.
+A formulação desta questão é, de fato, motivada pela Hipóstese 2 e, por se tratar de uma contribuição inédita desta SLR, não cabe a formulação de uma hipótese relacionada a ela.
+
+% eu não sei se esta Q3 está contemplada na forma como eu tratei o abstract e a introdução.
+Talvez isso devesse ser ou excluído desta revisão ou melhor discutido e comentado no abstract e na introdução.
+
+\paragraph{\textit{Q3.In the SR for text content context, how the news recommendation domain has been treated?}}
+Esta questão foi incluída nesta revisão devido ao interesse particular dos autores em, no futuro, propor abordagens específicas para aplicação em recomendação de notícias em portais WEB.
+A seguinte hipótese foi formulada para esta questão.
+
+\paragraph{\textbf{Hipothesys 3}: A recomendação de notícias é tratada na maioria dos \textcolor{red}{SR for text content context} discutidos na literatura e também disponíveis para uso na indústria, por meio de técnicas de filtros colaborativos.
+Além disso, o relacionamento existente a partir do conteúdo das notícias sob recomendação, dificilmente são considerados nas abordagens mais utilizadas.}
+
+\subsubsection{Systematic literature review protocol}
+\label{sec:protocol}
+ 
+ % notícias, livros, revistas, artigos científicos - acho que seria bom reexecutarmos o protocolo pois acredito que precisamos colocar as palavras, Scientific papers, Scientific Articles, e books na string.
+Ou então justificar que algumas palavras interessantes seriam essas contudo elas trazem um alto volume de falsos positivos ??????
+ 
+O protocolo de uma SLR especifica os métodos que serão usados para executar a revisão e, além disso, segui-lo ajuda a minimizar problemas de research bias.
+De acordo com \cite{Kitchenham07}, o protocolo deve descrever como a busca e seleção dos estudos primários deve ser feita, e como a extração de dados destes artigos deve ser conduzida, in order to responder as questões de pesquisa.
+O protocolo aplicado nesta SLR envolveu: (i) definição das fontes de dados e das estratégias de busca; (ii) definição das estratégias para seleção dos estudos primários e avaliação de sua qualidade; (iii) método de extração de dados dos estudos selecionados.
+
+\paragraph{Data sources and search strategy} 
+\paragraph{}
+
+As seguintes fontes de dados foram escolhidas para serem usadas nesta SLR: Scopus\footnote{http://www.scopus.com}, ISI Web of Science (WoS)\footnote{http://apps.webofknowledge.com}, IEEE Xplore\footnote{http://ieeexplore.ieee.org}, ACM Digital Library\footnote{http://dl.acm.org} e SpringerLink\footnote{http://link.springer.com/}.
+Cinco diferentes fontes de dados foram usadas com o intuito de maximizar o número de estudos candidatos a serem recuperados\footnote{Segundo \cite{Brereton07} there is no unique data
+source that indexes all existing papers at once.
+Assim, faz-se interessante usar várias fontes de dados na tentativa de garantir uma maior abrangência para a SLR.}.
+Essas fonte de dados foram escolhidas or por serem temáticas (idexam veículos de disseminação científica da área de Ciência da Computação, Engenharia e áreas correlatas) ou por apresentarem mecanismos eficientes de filtragem para obtenção de estudos de áreas interessantes para o objetivo desta SLR.
+Além disso, são notadamente fontes de dados bastante conhecidas e utilizadas pelos pesquisadores potencialmente interessandos no conteúdo desta SLR.
+
+
+A estratégia de busca foi definida a partir do estabelecimento de uma string genérica (Table~\ref{tab:stringG}) a ser aplicada a cada uma das fontes de dados.
+A string foi construída usando uma combinação de palavras chaves que fosse capaz de trazer estudos úteis para a composição das respostas para as questões de pesquisa já mencionadas.
+A string foi elaborada com o intuído de maximizar a abrangência dos estudos recuperados.
+Assim, a string foi composta por termos relacionados apenas à área de aplicação objetivada nesta SLR (sistemas de recomendação baseado em conteúdo para recomendação de itens textuais).
+Os aspectos referentes a área de Machine Learning foram tratados nos critérios de inclusão, uma vez que os inúmeros conceitos de ML possíveis de serem aplicados em SR é muito variado e difícil de ser enumerado de forma completa em uma string de busca.
+
+\begin{table} [htb]
+\caption{Generic search string applied to search fields: title, abstract, keywords; with the years range: 2003 -- 2013.}
 \centering
-\caption{Variables to be considered on the evaluation of interaction
-  techniques}
-\label{tab:exTable1}
-\includegraphics[width=.7\textwidth]{table.jpg}
+\small
+\begin{tabular}{l}
+\hline
+("content [-]{0,1} based filter*" \textbf{OR} "content [-]{0,1} based recommend*") \\
+\textbf{AND} \\
+(text \textbf{OR} news \textbf{OR} article*) \\
+\hline
+\end{tabular}
+\label{tab:stringG}
 \end{table}
 
-\section{Images}
+\textcolor{red}{Acho que vamos ter que mudar nossa string para algo como na tabela abaixo.
+Isso porque estou achando estranho falar em usar machine learning e não abranger knowledge based SR.
+Além disso, acabei citando na introdução (com base em literatura) que o contextos dos sistemas que recomendam conteúdo textual pode abranger notícias, textos, artigos científicos e livros.
+Vamos discutir isso.
+Precisamos fazer testes para ver se vai retornar muita coisa a mais além do que já veio.}
 
-All images and illustrations should be in black-and-white, or gray tones,
-excepting for the papers that will be electronically available (on CD-ROMs,
-internet, etc.). The image resolution on paper should be about 600 dpi for
-black-and-white images, and 150-300 dpi for grayscale images.  Do not include
-images with excessive resolution, as they may take hours to print, without any
-visible difference in the result. 
+\begin{table} [htb]
+\caption{Generic search string applied to search fields: title, abstract, keywords; with the years range: 2003 -- 2013.}
+\centering
+\small
+\begin{tabular}{l}
+\hline
+(("content [-]{0,1} based filter*" \textbf{OR} "content [-]{0,1} based recommend*") \textbf{OR} \\
+("knowledge [-]{0,1} based filter*" \textbf{OR} "knowledge [-]{0,1} based recommend*")) \\
+\textbf{AND} \\
+(text* \textbf{OR} news \textbf{OR} "scientific article*" \textbf{OR} "scientific paper*" \textbf{OR} book*) \\
+\hline
+\end{tabular}
+\label{tab:stringG2}
+\end{table}
 
-\section{References}
+% Tem que discutir melhor os termos da string e explicar essas notações.
+Mas vou esperar nossas decisões (que precisamos tomar) para então melhorar isso.
 
-Bibliographic references must be unambiguous and uniform.  We recommend giving
-the author names references in brackets, e.g. \cite{knuth:84},
-\cite{boulic:91}, and \cite{smith:99}.
+% Se a gente achar que com essa segunda string fica melhor, e se ao reexecutarmos a busca ficar com muitos artigos, então nós podemos fazer dos últimos 5 anos ao invés dos últimos 10 anos.
 
-The references must be listed using 12 point font size, with 6 points of space
-before each reference. The first line of each reference should not be
-indented, while the subsequent should be indented by 0.5 cm.
+Desde que não é possível usar a string genérica diretamente nos mecanismos de busca das cinco fontes de dados, a string foi adaptada para cada fonte de dado.
+As strings resultantes estão listadas na Table~\ref{tab:stringR}.
+
+\begin{table} [htb]
+\caption{Specific strings applied in each data source.}
+\centering
+\small
+\begin{tabular}{l}
+\hline
+Scopus \\
+\textcolor{red}{String usada no Scopus}\\
+\hline
+ISI Web of Science  \\
+\textcolor{red}{String usada no WoS}\\
+\hline
+IEEE Xplore  \\
+\textcolor{red}{String usada no IEEE}\\
+\hline
+ACM Digital Library  \\
+\textcolor{red}{String usada na ACM}\\
+\hline
+SpringerLink  \\
+\textcolor{red}{String usada na Springer} \\
+\hline
+\end{tabular}
+\label{tab:stringR}
+\end{table}
+
+\paragraph{Primary studies selection and assessment strategies}
+
+\paragraph{}
+
+ Para a seleção dos estudos primários a serem analisados, foram estabelecidos critérios de inclusão.
+Um estudo primário recuperado a partir da aplicação da string de busca será incluído na SLR se ele atender todos os critérios de inclusão definidos.
+Tais critérios têm o objetivo de garantir que os estudos incluídos são de fato pertinentes ao escopo da SLR.
+Além disso, eles permitem a reproducibilidade dos resultados da revisão e ajudam a determinar a qualidade dos estudos selecionados.
+Os seguintes critérios de inclusão foram aplicados nesta SLR:
+
+\begin{itemize}
+
+\item \textbf{IC-1}: o registro de dados identificado se refere a um scientific paper, published in a peer reviewed publication (o registro de dados não se refere a relatórios técnicos, livros, capítulos de livros, prefácios de anais ou editoriais de periódicos);
+% nós ainda poderíamos excluir short papers, posters, position paper, se quisermos diminuir um pouco mais o escopo de análise e melhorar critérios de qualidade pois estes artigos são borderlines em conferências ....
+\item \textbf{IC-2}: the paper is a primary study (i.e., it is not a secondary study as reviews, surveys or SLR).
+\item \textbf{IC-3}: the entire paper is electronically available on web;
+\item \textbf{IC-4}: the paper is entirely presented in the English language; 
+\item \textbf{IC-5}: the paper is related primarily to the Machine Learning or Information System fields (for example, the paper is not related to Marketing or Social Sciences fields);
+\item \textbf{IC-6}: o artigo trata, explicitamente, SR para conteúdo textual;
+\item \textbf{IC-7}: o artigo trata, explicitamente, de SR baseados em conteúdo ou baseados em conhecimento; 
+\item \textbf{IC-8}: o artigo faz referência explícita ao uso de estratégias de Machine Learning para modelagem e/ou implementação de algum módulo do SR.
+
+\end{itemize}
+
+Os quatro primeiros critérios garantem que o estudo se trata de um artigo científico primário, com qualidade avaliada em processo de revisão por pares e é acessível.
+O restante dos critérios garantem que o artigo atende ao escopo da SLR pretendida.
+
+Para esta SLR, a aplicação dos critérios de inclusão foi planejada para ser executada da seguinte forma\footnote{Antes da aplicação dos critérios de inclusão, as listas de registros retornadas de cada fonte de dados foram comparadas para eliminação de dupicatas.}: (i)  as listas de registros retornados das buscas foram avaliados para aplicação do critério IC-1; (ii) os abstracts dos registros restantes foram avaliados e os critérios IC-2 e IC-5 a IC-8 foram aplicados; (iii) os artigos referentes aos registros restantes foram avaliados segundo os critérios IC-3 e IC-4; (iv) os artigos restantes foram lidos na íntegra para extração de dados e novamente os critérios IC-6 a IC-8 foram avaliados.
+
+% acho que não vai acontecer, mas ...
+se ficarem poucos artigos, podemos aplicar snowballing (escolher uma stratégia para pegar as referências mais interessantes e de qualidade dos artigos que ficaram após a aplicação dos critérios de inclusão).
+
+% a abordagem abaixo eu vi em um artigo como TOLLGATE APPROACH, mas não sei se é a melhor nomenclatura para isso.
+
+Os critérios IC-1 a IC-5 foram objeto de atenção de apenas um pesquisador envolvido na condução da SLR.
+Já a primeira aplicação dos critérios IC-6 a IC-8 foi realizada por três pesquisadores usando uma abordagem Tollgate.
+Nesta abordagem, os três pesquisadores aplicam os critérios de maneira independente, e então, o consenso na decisão final é decidido por maioria.
+Já a segunda aplicação destes critérios foi realizada novamente por apenas um pesquisador, já que a leitura completa dos artigos foi dividida entre os pesquisadores.
+
+% ficou meio informal, mas deixei aqui para vocês entenderem o que eu acho que poderia ser feito para executarmos a SLR.
+Os três pesquisadores seriam, por enquanto: Lucas, Sara e Valdinei (como combinado previamente).
+Combinei com Clodoaldo que ele faria revisões no paper e ajudaria na organização das informações no texto.
+
+\paragraph{Método de extração de dados dos estudos selecionados}
+
+\paragraph{}
+
+\textcolor{red}{Foi estabelecida uma tabela a ser preenchida durante a leitura de cada artigo.
+Acho que podemos colocar os campos da tabela aqui, de forma resumida e comentada, para ilustrar como a leitura foi realizada.}
+
+\section{Results}
+\label{sec:results}
+
+\section{Discussion of results}
+\label{sec:discussion}
+
+\section{Roadmap}
+\label{sec:roadmap}
+
+\section{Conclusions}
+\label{sec:conc}
+
+% \section{General Information}
+
+% All full papers and posters (short papers) submitted to some SBC conference,
+% including any supporting documents, should be written in English or in
+% Portuguese.
+The format paper should be A4 with single column, 3.5 cm for upper
+% margin, 2.5 cm for bottom margin and 3.0 cm for lateral margins, without
+% headers or footers.
+The main font must be Times, 12 point nominal size, with 6
+% points of space before each paragraph.
+Page numbers must be suppressed.
+
+% Full papers must respect the page limits defined by the conference.
+% Conferences that publish just abstracts ask for \textbf{one}-page texts.
+
+% \section{First Page} \label{sec:firstpage}
+
+% The first page must display the paper title, the name and address of the
+% authors, the abstract in English and ``resumo'' in Portuguese (``resumos'' are
+% required only for papers written in Portuguese).
+The title must be centered
+% over the whole page, in 16 point boldface font and with 12 points of space
+% before itself.
+Author names must be centered in 12 point font, bold, all of
+% them disposed in the same line, separated by commas and with 12 points of
+% space after the title.
+Addresses must be centered in 12 point font, also with
+% 12 points of space after the authors' names.
+E-mail addresses should be
+% written using font Courier New, 10 point nominal size, with 6 points of space
+% before and 6 points of space after.
+
+% The abstract and ``resumo'' (if is the case) must be in 12 point Times font,
+% indented 0.8cm on both sides.
+The word \textbf{Abstract} and \textbf{Resumo},
+% should be written in boldface and must precede the text.
+
+% \section{CD-ROMs and Printed Proceedings}
+
+% In some conferences, the papers are published on CD-ROM while only the
+% abstract is published in the printed Proceedings.
+In this case, authors are
+% invited to prepare two final versions of the paper.
+One, complete, to be
+% published on the CD and the other, containing only the first page, with
+% abstract and ``resumo'' (for papers in Portuguese).
+
+% \section{Sections and Paragraphs}
+
+% Section titles must be in boldface, 13pt, flush left.
+There should be an extra
+% 12 pt of space before each title.
+Section numbering is optional.
+The first
+% paragraph of each section should not be indented, while the first lines of
+% subsequent paragraphs should be indented by 1.27 cm.
+
+% \subsection{Subsections}
+
+% The subsection titles must be in boldface, 12pt, flush left.
+
+% \section{Figures and Captions}\label{sec:figs}
+
+
+% Figure and table captions should be centered if less than one line
+% (Figure~\ref{fig:exampleFig1}), otherwise justified and indented by 0.8cm on
+% both margins, as shown in Figure~\ref{fig:exampleFig2}.
+The caption font must
+% be Helvetica, 10 point, boldface, with 6 points of space before and after each
+% caption.
+
+% \begin{figure}[ht]
+% \centering
+% \includegraphics[width=.5\textwidth]{fig1.jpg}
+% \caption{A typical figure}
+% \label{fig:exampleFig1}
+% \end{figure}
+
+% \begin{figure}[ht]
+% \centering
+% \includegraphics[width=.3\textwidth]{fig2.jpg}
+% \caption{This figure is an example of a figure caption taking more than one
+%   line and justified considering margins mentioned in Section~\ref{sec:figs}.}
+% \label{fig:exampleFig2}
+% \end{figure}
+
+% In tables, try to avoid the use of colored or shaded backgrounds, and avoid
+% thick, doubled, or unnecessary framing lines.
+When reporting empirical data,
+% do not use more decimal digits than warranted by their precision and
+% reproducibility.
+Table caption must be placed before the table (see Table 1)
+% and the font used must also be Helvetica, 10 point, boldface, with 6 points of
+% space before and after each caption.
+
+% \begin{table}[ht]
+% \centering
+% \caption{Variables to be considered on the evaluation of interaction
+%   techniques}
+% \label{tab:exTable1}
+% \includegraphics[width=.7\textwidth]{table.jpg}
+% \end{table}
+
+% \section{Images}
+
+% All images and illustrations should be in black-and-white, or gray tones,
+% excepting for the papers that will be electronically available (on CD-ROMs,
+% internet, etc.).
+The image resolution on paper should be about 600 dpi for
+% black-and-white images, and 150-300 dpi for grayscale images.
+ Do not include
+% images with excessive resolution, as they may take hours to print, without any
+% visible difference in the result.
+
+
+% \section{References}
+
+% Bibliographic references must be unambiguous and uniform.
+ We recommend giving
+% the author names references in brackets, e.g.
+\cite{knuth:84},
+% \cite{boulic:91}, and \cite{smith:99}.
+
+% The references must be listed using 12 point font size, with 6 points of space
+% before each reference.
+The first line of each reference should not be
+% indented, while the subsequent should be indented by 0.5 cm.
 
 \bibliographystyle{sbc}
-\bibliography{sbc-template}
+\bibliography{systematic-review}
 
 \end{document}

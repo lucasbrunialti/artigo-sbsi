@@ -1,3 +1,6 @@
+*.DS_Store
+
+*.gz
 *.aux
 *.glo
 *.idx
@@ -20,3 +23,4 @@
 *.mtc
 *.mtc1
 *.out
+*.fdb_latexmk
